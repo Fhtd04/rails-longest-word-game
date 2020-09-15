@@ -1,0 +1,22 @@
+<header>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</header>
+<h1>New game</h1>
+
+<div class="letters">
+  <% @letters.each do |letter| %>
+    <li class="list-inline-item btn btn-primary disabled"><%= letter %></li>
+  <% end %>
+</div>
+<p>What is the longest word you can find?</p>
+
+<div>
+  <form action="/score" method="POST">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters %>
+    <input type="text" placeholder="" name="word">
+    <span class="input-group-btn">
+      <input type="submit" class="btn btn-danger" value="send">
+    </span>
+  </form>
+</div>
